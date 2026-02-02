@@ -142,3 +142,21 @@ function updateProgressBar() {
   }
 }
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menu = document.querySelector('#mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const bars = document.querySelectorAll('.bar');
+
+    menu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        
+        // Animate the hamburger into an X
+        bars[0].style.transform = navLinks.classList.contains('active') 
+            ? 'rotate(-45deg) translate(-5px, 6px)' : 'none';
+        bars[1].style.opacity = navLinks.classList.contains('active') 
+            ? '0' : '1';
+        bars[2].style.transform = navLinks.classList.contains('active') 
+            ? 'rotate(45deg) translate(-5px, -6px)' : 'none';
+    });
+});

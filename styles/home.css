@@ -434,3 +434,16 @@ body {
   .days-number { font-size: 80px; }
   .counter-title { font-size: 40px; }
 }
+
+/* Animation for the Hamburger to X */
+.menu-toggle.is-active .bar:nth-child(2) { 
+  opacity: 0; 
+}
+
+.menu-toggle.is-active .bar:nth-child(1) { 
+  transform: translateY(9px) rotate(45deg); 
+}
+
+.menu-toggle.is-active .bar:nth-child(3) { 
+  transform: translateY(-9px) rotate(-45deg); 
+}
