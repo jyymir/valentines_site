@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Gallery</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+</style>
+  <link rel="icon" type="image/x-icon" href="gifs/icons8-favorite-32.png">
+  <link rel="stylesheet" href="/styles/gallery.css">
+</head>
+<body>
+    <nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">J & E</a>
+    
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="game.html">Games</a></li>
+      <li><a href="letter.html">Letter</a></li>
+    </ul>
+  </div>
+</nav>
+</nav>
+  <div class="gallery-container">
+      <h1 class="gallery-title">Gallery Of Us!</h1>
+
+    <div class="counter-section">
+      <h2 class="counter-title">Our Time Together</h2>
+      <div id="days-counter" class="days-number">0</div>
+      <p class="counter-label">Days and counting...</p>
+      <p class="counter-label">Days and counting... <span class="pulsing-heart">❤️</span></p>
+    </div>
+      
+      <div class="media-grid">
+        <div class="media-item">
+          <img src="pics/first_meet_cookout.JPG" alt="Photo 1" loading="lazy">
+          <p class="photo-note">Its so funny looking back at how we used to dress! Thanks to me you dress so much better..</p>
+        </div>
+
+        <div class="media-item">
+          <img src="pics/random_pic_emroom.JPG" alt="Photo 2" loading="lazy">
+          <p class="photo-note">I dont even remember this pic haha, we have grown together</p>
+        </div>
+
+        <div class="media-item">
+          <img src="pics/random_pic_myroom.jpg" alt="Photo 2" loading="lazy">
+          <p class="photo-note">Another random pic haha </p>
+        </div>
+
+        <div class="media-item">
+          <img src="pics/mexico_game.jpeg" alt="Photo 2" loading="lazy">
+          <p class="photo-note">A sweet little note here</p>
+        </div>
+
+        <div class="media-item">
+          <img src="pics/mountain.jpeg" alt="Photo 2" loading="lazy">
+          <p class="photo-note">I hope you enjoyed the mountains! More to come I'm excited to see the world from above</p>
+        </div>
+
+        <div class="media-item">
+          <img src="pics/IMG_1510.jpg" alt="Photo 2" loading="lazy">
+          <p class="photo-note">A nice beach trip, I cant wait to go to a really nice one though haha</p>
+        </div>
+
+        <div class="media-item">
+          <img src="pics/walk_cafe.jpeg" alt="Photo 2" loading="lazy">
+          <p class="photo-note">I loved this day, being able to educate you on black history was cool to me haha I hope you found enjoyment in it! Washington D.C next..</p>
+        </div>
+
+        <div class="media-item">
+          <img src="pics/zoo_date.jpeg" alt="Photo 2" loading="lazy">
+          <p class="photo-note">The first zoo date was nice even though it was so hot haha, lets go back when the Asian exhibit opens!</p>
+        </div>
+
+        <div class="media-item">
+          <img src="pics/prom_2024.jpeg" alt="Photo 2" loading="lazy">
+          <p class="photo-note">What I love most about this is how we will be able to show our kids the prom pics we took haha. I want to take you to a nice place where you can where a nice dress again.</p>
+        </div>
+
+        <div class="media-item">
+          <img src="pics/IMG_5357 2.JPG" alt="Photo 2" loading="lazy">
+          <p class="photo-note">It was nice to see you experience your first game, I hope you get to wear that smile more often</p>
+        </div>
+
+        <div class="media-item">
+          <img src="pics/church_wilmington.jpeg" alt="Photo 2" loading="lazy">
+          <p class="photo-note">I thought this was a nice pic to add from the Wilmington Church, God has a purpose for you and I cant wait to see you walk in it!</p>
+        </div>
+
+        <div class="media-item">
+          <img src="pics/mall_old.jpeg" alt="Photo 2" loading="lazy">
+          <p class="photo-note">A random pic from the mall haha, I bet I knew you were taking a pic and tried to play it off haha</p>
+        </div>
+        
+        </div>
+  </div>
+
+  
+  <div id="lightbox" class="lightbox">
+  <span class="close-btn">&times;</span>
+  <img class="lightbox-img" id="lightbox-img">
+  <p id="lightbox-caption"></p>
+  <script src="action/gallery.js"></script>
+</div>
+</body>
+</html>

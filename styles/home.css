@@ -1,0 +1,436 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+}
+
+.intro {
+  width: 100%; /* Changed from 100vw to avoid horizontal scroll bugs */
+  height: 45vh;
+  background-color: grey; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Required so video can sit inside it */
+  overflow: hidden;    /* Clips the video so it doesn't leak out */
+  flex-direction: column;
+  z-index: 5;
+  position: relative;
+  text-align: center;
+}
+
+/* New class for the video */
+.back-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 1; /* Puts video above the grey background */
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.intro h1 {
+  font-family: "Italianno", cursive;
+  font-size: 90px;
+  color: white;
+  font-weight: lighter;
+  position: relative; 
+  z-index: 2; /* Puts text on top of the video */
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3); /* Helps thin fonts stay readable */
+}
+
+#playBtn {
+  display: inline-block; /* Allows it to sit nicely under text */
+  margin-top: 20px;      /* Creates space between h1 and button */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border: 1px solid white;
+  color: white;
+  padding: 8px 25px;
+  font-family: "Italianno", cursive;
+  font-size: 28px; /* Slightly bigger to match the vibe */
+  cursor: pointer;
+  z-index: 10;           /* Ensures it stays above the video */
+  position: relative;    /* Required to work with z-index */
+  border-radius: 30px;
+  transition: 0.3s;
+  align-items: center;
+}
+
+#playBtn:hover {
+  background: white;
+  color: grey;
+}
+
+.navbar {
+  width: 100%;
+  height: 80px;
+  background: rgba(255, 222, 227, 0.8); /* Your pink color with transparency */
+  backdrop-filter: blur(10px); /* The "Glass" effect */
+  -webkit-backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* Logo on left, Links on right */
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: 'Italianno', cursive;
+  font-size: 45px;
+  color: black;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: black;
+  text-decoration: none;
+  font-family: 'Italianno', cursive;
+  font-size: 28px;
+  position: relative;
+  padding: 5px 0;
+}
+
+/* The Animated Underline Effect */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: black;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .bar {
+    width: 25px;
+    height: 3px;
+    background: black;
+    border-radius: 2px;
+    transition: 0.4s;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 222, 227, 0.95);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    clip-path: circle(0% at 100% 0%); /* Modern reveal animation */
+    transition: clip-path 0.5s ease-in-out;
+  }
+
+  .nav-links.active {
+    clip-path: circle(150% at 100% 0%);
+
+  }
+
+  /* Increase Intro height for a more immersive feel on phones */
+  .intro {
+    height: 60vh; 
+  }
+
+  /* Make the Play Button larger for touch sensitivity */
+  #playBtn {
+    padding: 12px 35px;
+    font-size: 32px; /* Slightly larger text for mobile */
+  }
+
+  /* --- NEW: Scroll Progress Bar Container --- */
+  .progress-container {
+    position: fixed;
+    top: 80px; /* Sits right under your 80px navbar */
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    z-index: 1001;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: #FFDEE3; /* Matches your theme */
+    width: 0%; /* Starts at 0, controlled by JS */
+    box-shadow: 0 0 10px rgba(255, 222, 227, 0.8);
+  }
+}
+
+/* message */
+
+.message-holder {
+  width: 100%;
+  height: 150px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border-bottom: 1px solid white; */
+  border-top: 1px solid white;
+  border-radius: 10px;
+}
+
+.message-box {
+  width: 80%;
+  height: 100px;
+  background-color: black;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-box p {
+  font-family: "Italianno", cursive;
+  font-size: 32px;
+  color: white;
+}
+
+
+/* Timeline */
+
+:root {
+    --timeline-color: #ffffff;
+    --branch-width: 50px;
+}
+
+.timeline-wrapper {
+    position: relative;
+    padding: 100px 0;
+    background-color: black; /* Dark background to make white line pop */
+    opacity: 0; /* Start invisible */
+    filter: blur(10px); /* Start slightly blurry */
+    transition: opacity 2s ease, filter 2s ease;
+}
+
+.timeline-wrapper.hidden {
+    opacity: 0;
+}
+
+.timeline-wrapper.revealed {
+    opacity: 1;
+    filter: blur(0);
+}
+
+/* The Vertical Center Line */
+.timeline-progress-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 3px;
+    background: white;
+    transform: translateX(-50%);
+    height: 0; /* Animated by JS */
+    z-index: 1;
+}
+
+.timeline-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline-item {
+    display: flex;
+    width: 100%;
+    margin-bottom: 100px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.8s ease-out;
+}
+
+/* Logic for Staggering */
+.timeline-item:nth-child(odd) { justify-content: flex-start; }
+.timeline-item:nth-child(even) { justify-content: flex-end; }
+
+.timeline-content {
+    width: 40%;
+    position: relative;
+    text-align: center;
+}
+
+/* THE BRANCH (Horizontal Line) */
+.timeline-content::before {
+    content: "";
+    position: absolute;
+    top: 20px; /* Aligns with top of video */
+    height: 3px;
+    width: var(--branch-width);
+    background: var(--timeline-color);
+}
+
+/* Branch for Left Items (Points Right) */
+.timeline-item:nth-child(odd) .timeline-content::before {
+    right: calc(var(--branch-width) * -1 - 18px); /* Adjust based on container */
+}
+
+/* Branch for Right Items (Points Left) */
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: calc(var(--branch-width) * -1 - 18px);
+}
+
+/* Media Styling */
+.media-box video {
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid white;
+    height: 400px;
+    object-fit: cover;
+}
+
+.text-box h3{
+    font-family: "Italianno", cursive;
+    font-size: 40px;
+    color: white;
+    margin-top: 15px;
+}
+
+.text-box p {
+    font-family: "Italianno", cursive;
+    font-size: 26px;
+    color: white;
+    margin-top: 10px;
+}
+
+/* Pop-in Effect */
+.timeline-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- IPADS & TABLETS --- */
+@media (max-width: 1024px) {
+    .timeline-content {
+        width: 45%; /* Slightly wider on tablets */
+    }
+    .intro h1 {
+        font-size: 70px; /* Shrink title slightly */
+    }
+}
+
+/* --- PHONES --- */
+@media (max-width: 768px) {
+    /* 1. Move the vertical line to the left side instead of center */
+    .timeline-progress-line {
+        left: 30px; 
+    }
+
+    /* 2. Make every item take up the full width */
+    .timeline-item {
+        justify-content: flex-start !important; /* Force everything to the left */
+        padding-left: 60px; /* Room for the vertical line */
+        margin-bottom: 60px; /* Closer together for easier scrolling */
+    }
+
+    .timeline-content {
+        width: 90%; /* Take up most of the screen */
+        text-align: left; /* Easier to read on mobile */
+    }
+
+    /* 3. Adjust the "Branches" to connect to the left-side line */
+    .timeline-content::before {
+        left: -33px !important;
+        right: auto !important;
+        width: 30px;
+    }
+
+    /* 4. Fix Video Heights */
+    .media-box video {
+        height: 300px; /* Shorter videos so they fit on the screen better */
+    }
+
+    /* 5. Scale down the Intro text */
+    .intro h1 {
+        font-size: 50px;
+        padding: 0 10px;
+    }
+    
+    .message-box p {
+        font-size: 24px;
+        padding: 0 15px;
+        text-align: center;
+    }
+}
+
+.counter-section {
+  text-align: center;
+  padding: 100px 20px;
+  background: rgba(255, 222, 227, 0.05);
+  border-radius: 20px;
+  margin-top: 50px;
+}
+
+.counter-title {
+  font-family: 'Italianno', cursive;
+  font-size: 50px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.days-number {
+  font-family: 'Italianno', cursive;
+  font-size: 120px; /* Big and bold */
+  color: #FFDEE3;
+  text-shadow: 0 0 20px rgba(255, 222, 227, 0.6);
+  line-height: 1;
+}
+
+.counter-label {
+  font-family: 'Italianno', cursive;
+  font-size: 30px;
+  color: white;
+  opacity: 0.8;
+}
+
+/* Mobile tweak */
+@media (max-width: 600px) {
+  .days-number { font-size: 80px; }
+  .counter-title { font-size: 40px; }
+}

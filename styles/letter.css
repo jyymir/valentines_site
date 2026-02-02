@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000000;
+}
+
+.navbar {
+  width: 100%;
+  height: 80px;
+  background: rgba(255, 222, 227, 0.8); /* Your pink color with transparency */
+  backdrop-filter: blur(10px); /* The "Glass" effect */
+  -webkit-backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* Logo on left, Links on right */
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: 'Italianno', cursive;
+  font-size: 45px;
+  color: black;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: black;
+  text-decoration: none;
+  font-family: 'Italianno', cursive;
+  font-size: 28px;
+  position: relative;
+  padding: 5px 0;
+}
+
+/* The Animated Underline Effect */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: black;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .bar {
+    width: 25px;
+    height: 3px;
+    background: black;
+    border-radius: 2px;
+    transition: 0.4s;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 222, 227, 0.95);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    clip-path: circle(0% at 100% 0%); /* Modern reveal animation */
+    transition: clip-path 0.5s ease-in-out;
+  }
+
+  .nav-links.active {
+    clip-path: circle(150% at 100% 0%);
+  }
+}
+
+.letter-container {
+  width: 90%;            /* Responsive width for mobile */
+  max-width: 700px;      /* Restricts width on desktop so lines aren't too long */
+  margin: 40px auto;     /* Centers the letter */
+  padding: 50px;         /* Generous padding for a "letter" look */
+  background: #fffdfa;   /* Warm paper color */
+  border-radius: 2px;    /* Sharper corners look more like paper */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-family: 'Indie Flower', cursive;
+  font-size: 30px;       /* Larger for better readability */
+  line-height: 1.4;
+  color: #2c2c2c;
+  position: relative;
+  border-left: 15px solid #ffdee3; /* Elegant pink "bookmark" accent */
+  animation: fadeInLetter 2s ease-in-out;
+}
+
+
+/* Make the "Emily" stand out */
+.letter-container h1 {
+  font-size: 50px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  display: inline-block;
+  
+}
+
+.letter-container p {
+  margin-bottom: 25px;
+}
+
+.signature {
+  text-align: right;
+  margin-top: 50px !important;
+  font-size: 40px;
+  color: #ff8da1; /* Soft pink signature */
+}
+
+/* iPad Adjustments */
+@media (max-width: 1024px) {
+  .letter-container {
+    padding: 40px;
+    font-size: 32px;
+    animation: fadeInLetter 2s ease-in-out;
+  }
+}
+
+/* Mobile Phone Adjustments */
+@media (max-width: 600px) {
+  .letter-container {
+    width: 95%;
+    padding: 30px 20px;
+    font-size: 28px;      /* Slightly smaller font for small screens */
+    margin: 20px auto;
+    animation: fadeInLetter 2s ease-in-out;
+  }
+  
+  .letter-container h1 {
+    font-size: 40px;
+  }
+}
+
+@keyframes fadeInLetter {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animation for the Hamburger to X */
+.menu-toggle.is-active .bar:nth-child(2) { 
+  opacity: 0; 
+}
+
+.menu-toggle.is-active .bar:nth-child(1) { 
+  transform: translateY(9px) rotate(45deg); 
+}
+
+.menu-toggle.is-active .bar:nth-child(3) { 
+  transform: translateY(-9px) rotate(-45deg); 
+}
